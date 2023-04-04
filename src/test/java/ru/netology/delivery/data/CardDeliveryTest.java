@@ -23,9 +23,9 @@ public class CardDeliveryTest {
     @DisplayName("Should successful plan meeting")
     void shouldSuccessfulPlanMeeting() {
         DataGenerator.UserInfo validUser = DataGenerator.Registration.generateUser("ru");
-        int daysToAddForFirstMeeting = 4;
+        int daysToAddForFirstMeeting = 10;
         String firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
-        int daysToAddForSecondMeeting = 7;
+        int daysToAddForSecondMeeting = 12;
         String secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
         $("[data-test-id=city] input").setValue(validUser.getCity());
         $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
@@ -44,7 +44,8 @@ public class CardDeliveryTest {
         $("[data-test-id='replan-notification'] .notification__content")
                 .shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?"))
                 .shouldBe(visible);
-        $("[data-test-id='replan-notification'] button").click();
+        //$("[data-test-id='replan-notification'] button").click();
+        $(byText("Перепланировать")).click();
         $("[data-test-id='success-notification'] .notification__content")
                 .shouldHave(exactText("Встреча успешно запланирована на " + secondMeetingDate))
                 .shouldBe(visible);
