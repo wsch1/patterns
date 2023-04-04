@@ -18,7 +18,7 @@ public class DataGenerator {
         return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
     public static String generateCity() {
-        var cities = new String[]{"Москва","Челябинск","Орел","Рязань","Анадырь", "Самара"};
+        var cities = new String[]{"Москва","Челябинск","Москва","Рязань","Анадырь", "Самара"};
         return cities[new Random().nextInt(cities.length)];
     }
     public static String generateName(String locale) {
